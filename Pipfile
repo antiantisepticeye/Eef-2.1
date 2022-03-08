@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+discord-py = {ref = "master", git = "https://github.com/Rapptz/discord.py"}
+cairosvg = "*"
+numpy = "*"
+fuzzywuzzy = "*"
+python-levenshtein = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
