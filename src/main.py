@@ -2,6 +2,8 @@
 
 import os
 from asyncio import sleep
+from dotenv import load_dotenv
+load_dotenv()
 
 """Discord Imports"""
 

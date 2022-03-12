@@ -6,7 +6,9 @@ from discord import app_commands
 
 
 @app_commands.command(name="choose", description="Chooses randomly from the options")
-@app_commands.describe(ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	ephemeral="To make the response only visible to you"
+)
 async def choose_(interaction:discord.Interaction,
 	option1: str = None,
 	option2: str = None,

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "58f1251912fe097c2e1afb142eb5df0aa481c7d4c23adde0644a39b08201369a"
+            "sha256": "a36c0fe51361a5537fafc78cbedf3928dacdfb804198413cea42426740f45a0e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -101,7 +101,7 @@
         },
         "discord-py": {
             "git": "https://github.com/Rapptz/discord.py",
-            "ref": "987e27dfce24b6445ac6160561c93970fcfafcb4"
+            "ref": "6def5c9131ac686edc3a2294cc6735cbbc30c909"
         },
         "fuzzywuzzy": {
             "hashes": [
@@ -110,6 +110,10 @@
             ],
             "index": "pypi",
             "version": "==0.18.0"
+        },
+        "legofy": {
+            "git": "https://github.com/JuanPotato/Legofy.git",
+            "ref": "004d1119f392b1b8ae2598ebf5096afdba7c86d3"
         },
         "numpy": {
             "hashes": [
@@ -130,6 +134,7 @@
                 "sha256:dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18",
                 "sha256:e7927a589df200c5e23c57970bafbd0cd322459aa7b1ff73b7c2e84d6e3eae62",
                 "sha256:f8c1f39caad2c896bc0018f699882b345b2a63708008be29b1f355ebf6f933fe",
+                "sha256:f950f8845b480cffe522913d35567e29dd381b0dc7e4ce6a4a9f9156417d2430",
                 "sha256:fade0d4f4d292b6f39951b6836d7a3c7ef5b2347f3c420cd9820a1d90d794802",
                 "sha256:fdf3c08bce27132395d3c3ba1503cac12e17282358cb4bddc25cc46b0aca07aa"
             ],
@@ -182,6 +187,14 @@
                 "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
             ],
             "version": "==2.21"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:32b2bdc1873fd3a3c346da1c6db83d0053c3c62f28f1f38516070c4c8971b1d3",
+                "sha256:a5de49a31e953b45ff2d2fd434bbc2670e8db5273606c1e737cc6b93eff3655f"
+            ],
+            "index": "pypi",
+            "version": "==0.19.2"
         },
         "python-levenshtein": {
             "hashes": [

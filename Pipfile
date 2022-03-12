@@ -9,6 +9,10 @@ cairosvg = "*"
 numpy = "*"
 fuzzywuzzy = "*"
 python-levenshtein = "*"
+python-dotenv = "*"
+legofy = {git = "https://github.com/JuanPotato/Legofy.git"}
+opencv-python = "*"
+setuptools = "*"
 
 [dev-packages]
 

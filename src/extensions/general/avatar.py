@@ -6,7 +6,11 @@ from discord import app_commands
 
 
 @app_commands.command(name="avatar", description="Gets a user's avatar!")
-@app_commands.describe(user="The user whose avatar to get", guild_pfp="To get the guild specific avatar instead", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user whose avatar to get",
+	guild_pfp="To get the guild specific avatar instead",
+	ephemeral="To make the response only visible to you"
+)
 async def avatar_(interaction: discord.Interaction, user: discord.Member, guild_pfp: bool=False, ephemeral:bool=False):
 	av_user: discord.User = user
 
@@ -22,7 +26,7 @@ async def avatar_(interaction: discord.Interaction, user: discord.Member, guild_
 		
 		avatar_url = member.guild_avatar
 		if not avatar_url:
-			await interaction.client.send_error(interaction, "Member does not have a guild avatar!", ephemeral=ephemeral.value)
+			await interaction.client.send_error(interaction, "Member does not have a guild avatar!", ephemeral=ephemeral)
 
 	else:
 

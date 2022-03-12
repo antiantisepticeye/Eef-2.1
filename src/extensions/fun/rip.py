@@ -8,7 +8,10 @@ from discord import app_commands
 
 
 @app_commands.command(name="rip", description="Rest in peace 😔")
-@app_commands.describe(user="The user who died 😔", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user who died 😔",
+	ephemeral="To make the response only visible to you"
+)
 async def rip_(interaction:discord.Interaction, user: discord.Member, ephemeral:bool=False):
 	await interaction.response.defer(ephemeral=ephemeral)
 	webhook = interaction.followup

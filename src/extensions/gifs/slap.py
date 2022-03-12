@@ -6,7 +6,10 @@ from discord import app_commands
 
 
 @app_commands.command(name="slap", description="Slap a user!")
-@app_commands.describe(user="The user to slap", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user to slap",
+	ephemeral="To make the response only visible to you"
+)
 async def slap_(interaction:discord.Interaction, user: discord.Member=None, ephemeral:bool=False):
 	gifs = [
 		"https://media1.tenor.com/images/d14969a21a96ec46f61770c50fccf24f/tenor.gif?itemid=5509136",

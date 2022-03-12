@@ -6,7 +6,10 @@ from discord import app_commands
 
 
 @app_commands.command(name="kick", description="Kick a user!")
-@app_commands.describe(user="The user to kick", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user to kick",
+	ephemeral="To make the response only visible to you"
+)
 async def kick_(interaction:discord.Interaction, user: discord.Member=None, ephemeral:bool=False):
 	gifs = [
 		"https://media1.tenor.com/images/fb2a19c9b689123e6254ad9ac6719e96/tenor.gif?itemid=4922649",

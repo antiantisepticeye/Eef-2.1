@@ -6,7 +6,10 @@ from discord import app_commands
 
 
 @app_commands.command(name="poke", description="Poke a user!")
-@app_commands.describe(user="The user you wanna poke", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user you wanna poke",
+	ephemeral="To make the response only visible to you"
+)
 async def poke_(interaction:discord.Interaction, user: discord.Member=None, ephemeral:bool=False):
 	gifs = [
 		"https://media1.tenor.com/images/0da232de2ee45e1464bf1d5916869a39/tenor.gif?itemid=16935454",

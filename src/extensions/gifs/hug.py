@@ -6,7 +6,10 @@ from discord import app_commands
 
 
 @app_commands.command(name="hug", description="Hug a user!")
-@app_commands.describe(user="The user to give a hug to",ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	user="The user to give a hug to",
+	ephemeral="To make the response only visible to you"
+)
 async def hug_(interaction:discord.Interaction, user: discord.Member=None, ephemeral:bool=False):
 	gifs = [
 		"https://media1.tenor.com/images/1069921ddcf38ff722125c8f65401c28/tenor.gif?itemid=11074788",

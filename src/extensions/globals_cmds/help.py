@@ -39,64 +39,67 @@ help_embeds = {
 	}
 
 class Dropdown(discord.ui.Select):
-    def __init__(self, id_:int):
-        self.id_ = id_
+	def __init__(self, id_:int):
+		self.id_ = id_
 
-        options = [
-            discord.SelectOption(label='General', value="embed1", description='General command list', emoji=u'\u2139'),
-            discord.SelectOption(label='Fun', value="embed2", description='Fun command list', emoji=u'\U0001F389'),
-            discord.SelectOption(label='Action', value="embed3", description='Info command list', emoji=u'\U0001F92A'),
-            discord.SelectOption(label='Gifs', value="embed4", description='Gif command list', emoji=u'\U0001F92A'),
-        ]
+		options = [
+			discord.SelectOption(label='General', value="embed1", description='General command list', emoji=u'\u2139'),
+			discord.SelectOption(label='Fun', value="embed2", description='Fun command list', emoji=u'\U0001F389'),
+			discord.SelectOption(label='Action', value="embed3", description='Info command list', emoji=u'\U0001F92A'),
+			discord.SelectOption(label='Gifs', value="embed4", description='Gif command list', emoji=u'\U0001F92A'),
+		]
 
-        super().__init__(placeholder='Choose command category', min_values=1, max_values=1, options=options)
+		super().__init__(placeholder='Choose command category', min_values=1, max_values=1, options=options)
 
-    async def callback(self, interaction: discord.Interaction):
-        if interaction.user.id == self.id_:
-            await interaction.response.edit_message(embed = help_embeds[self.values[0]])
+	async def callback(self, interaction: discord.Interaction):
+		if interaction.user.id == self.id_:
+			await interaction.response.edit_message(embed = help_embeds[self.values[0]])
 
 class DropdownView(discord.ui.View):
-    def __init__(self, id_:int):
-        super().__init__()
-        self.value = None
+	def __init__(self, id_:int):
+		super().__init__()
+		self.value = None
 
-        self.add_item(Dropdown(id_))
-        self.add_item(discord.ui.Button(label='Invite Eef!', url="https://discord.com/api/oauth2/authorize?client_id=815817857404502037&permissions=0&scope=bot%20applications.commands"))
-        self.add_item(discord.ui.Button(label='Support server!', url="https://discord.gg/qUc3UJKpaz"))
+		self.add_item(Dropdown(id_))
+		self.add_item(discord.ui.Button(label='Invite Eef!', url="https://discord.com/api/oauth2/authorize?client_id=815817857404502037&permissions=0&scope=bot%20applications.commands"))
+		self.add_item(discord.ui.Button(label='Support server!', url="https://discord.gg/qUc3UJKpaz"))
 
 
 
 @app_commands.command(name="help", description="Help command here to help!")
-@app_commands.describe(command="The command to get more info about", ephemeral="To make the response only visible to you")
+@app_commands.describe(
+	command="The command to get more info about",
+	ephemeral="To make the response only visible to you"
+)
 async def help_(interaction:discord.Interaction, command:str=None, ephemeral:bool=False):
 	embed = discord.Embed(description='**Choose help category to learn more or use the command option to know more about a specific command**', color=0x80002f)
 	await interaction.response.send_message(embed=embed, view=DropdownView(id_=interaction.user.id), ephemeral=ephemeral)
 
 
 def get_command_name_list(interaction: discord.Interaction) -> List[str]:
-    # [i for i in tree.get_commands() + tree.get_commands(guild=discord.Object(id=guild)) if isinstance(i, app_commands.Command)]
-    name_list = []
-    tree: discord.app_commands.CommandTree = interaction.client.tree
-    for app_command in tree.get_commands() + tree.get_commands(guild=discord.Object(id=interaction.guild_id)):
-        if isinstance(app_command, app_commands.Command):
-            name_list.append(f"/{app_command.name}")
-        elif isinstance(app_command, app_commands.Group):
-            for i in app_command.commands:
-                if isinstance(i, app_commands.Command):
-                    name_list.append(f"/{app_command.name}/{i.name}")
+	# [i for i in tree.get_commands() + tree.get_commands(guild=discord.Object(id=guild)) if isinstance(i, app_commands.Command)]
+	name_list = []
+	tree: discord.app_commands.CommandTree = interaction.client.tree
+	for app_command in tree.get_commands() + tree.get_commands(guild=discord.Object(id=interaction.guild_id)):
+		if isinstance(app_command, app_commands.Command):
+			name_list.append(f"/{app_command.name}")
+		elif isinstance(app_command, app_commands.Group):
+			for i in app_command.commands:
+				if isinstance(i, app_commands.Command):
+					name_list.append(f"/{app_command.name}/{i.name}")
 
-    return name_list 
+	return name_list 
 
 
 def get_commands(interaction: discord.Interaction, current:str) -> List[str]:
-    all_cmds = get_command_name_list(interaction)
-    if not current: return sorted(all_cmds[:15])
-    results = fuzzy_search(current, all_cmds)
-    results = sorted(results[:15])
-    return results 
+	all_cmds = get_command_name_list(interaction)
+	if not current: return sorted(all_cmds[:15])
+	results = fuzzy_search(current, all_cmds)
+	results = sorted(results[:15])
+	return results 
 
 
 @help_.autocomplete('command')
 async def command_autocomplete(interaction: discord.Interaction,current: str,namespace: app_commands.Namespace) -> List[app_commands.Choice[str]]:
-    results = get_commands(interaction, current)
-    return [ app_commands.Choice(name=command, value=command) for command in results ]
+	results = get_commands(interaction, current)
+	return [ app_commands.Choice(name=command, value=command) for command in results ]
