@@ -38,7 +38,7 @@ async def emoji_(interaction:discord.Interaction, emoji:str, ephemeral:bool=Fals
 		try:
 			try:
 				async with aiohttp.ClientSession() as session:
-					async with session.get(f'https://api.eefbot.ga/emojis/parse?argument={emoji}&authKey={os.getenv("API_TOKEN")}') as res:
+					async with session.get(f'{interaction.client.API_URL}/emojis/parse?argument={emoji}&authKey={os.getenv("API_TOKEN")}') as res:
 						if 200 <= res.status < 300:
 							data = await res.json()
 							if len(data["emoji_data"]):
