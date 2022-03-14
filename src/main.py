@@ -28,8 +28,8 @@ tree = app_commands.CommandTree(client)
 """Add variables to the client object"""
 client.tree = tree
 client.send_error = send_error_embed
-client.API_URL = "https://api.eefbot.ga"
-
+client.API_BASE = "https://api.eefbot.ga"
+client.API_TOKEN = os.getenv("API_TOKEN")
 
 @client.event
 async def on_ready():
