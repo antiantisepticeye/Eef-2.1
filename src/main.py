@@ -23,7 +23,6 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
-client.change_presence(activity=discord.Game("Eef release v2.0 | $help | New update soon 👀"))
 tree = app_commands.CommandTree(client)
 
 """Add variables to the client object"""
@@ -34,7 +33,7 @@ client.API_TOKEN = os.getenv("API_TOKEN")
 
 @client.event
 async def on_ready():
-	
+	await client.change_presence(activity=discord.Game("Eef release v2.0 | $help | New update soon 👀"))	
 	print("Syncing commands...")
 	await tree.sync()
 	print("Bot is ready!")
