@@ -33,7 +33,7 @@ client.API_TOKEN = os.getenv("API_TOKEN")
 
 @client.event
 async def on_ready():
-	await client.change_presence(activity=discord.Game("Eef release v2.0 | $help | New update soon 👀"))	
+	await client.change_presence(activity=discord.Game("Eef v2.1 | /help | Now using slash commands!"))	
 	print("Syncing commands...")
 	await tree.sync()
 	print("Bot is ready!")
