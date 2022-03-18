@@ -1,7 +1,9 @@
 """Imports"""
 
+from math import floor
 import os
 from asyncio import sleep
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -25,13 +27,32 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
+
+def get_uptime() -> str:
+	current_date = datetime.now()
+	delta: timedelta = current_date - client.start_date
+	total_seconds = delta.seconds
+	total_minutes = floor(total_seconds/(60**1))
+	total_hours = floor(total_seconds/(60**2))
+	total_days = floor(total_seconds/(60**2 * 24))
+	d = {
+		"days": total_days % 30,
+		"hours": total_hours % 24,
+		"minutes": total_minutes % 60
+	}
+	return ", ".join([f"{v} {k}" for k,v in d.items() if v]) or str(floor(total_seconds)) + " seconds"
+
+
 """Add variables to the client object"""
 client.tree = tree
 client.send_error = send_error_embed
 client.API_BASE = "https://api.eefbot.ga"
 client.API_TOKEN = os.getenv("API_TOKEN")
 client.debug_mode = False
-client.debug_guild = discord.Object(id=809714134915481650)
+client.debug_guild = discord.Object(id=12345678901234567)
+client.start_date = datetime.now()
+client.get_uptime = get_uptime
+
 
 @client.event
 async def on_ready():
