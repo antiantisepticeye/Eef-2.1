@@ -13,6 +13,10 @@ from . import (
 )
 
 
-def setup(tree: app_commands.CommandTree):
-	tree.add_command(ping.ping_)
-	tree.add_command(help.help_)
+def setup(tree: app_commands.CommandTree, guild=None):
+	if guild:
+		tree.add_command(ping.ping_, guild=guild)
+		tree.add_command(help.help_, guild=guild)
+	else:
+		tree.add_command(ping.ping_)
+		tree.add_command(help.help_)

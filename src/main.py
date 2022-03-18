@@ -30,12 +30,17 @@ client.tree = tree
 client.send_error = send_error_embed
 client.API_BASE = "https://api.eefbot.ga"
 client.API_TOKEN = os.getenv("API_TOKEN")
+client.debug_mode = False
+client.debug_guild = discord.Object(id=809714134915481650)
 
 @client.event
 async def on_ready():
 	await client.change_presence(activity=discord.Game("Eef v2.1 | /help | Now using slash commands!"))	
 	print("Syncing commands...")
-	await tree.sync()
+	if client.debug_mode:
+		await tree.sync(guild=client.debug_guild)
+	else: 
+		await tree.sync()
 	print("Bot is ready!")
 
 

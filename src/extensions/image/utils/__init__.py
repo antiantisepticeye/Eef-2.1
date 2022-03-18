@@ -17,6 +17,13 @@ ASSET_IMAGES = {
 	"wanted": cv2.imread(ASSET_DIRECTORY + "wanted.png", cv2.IMREAD_UNCHANGED),
 }	
 
+static_image_content_type = [
+	"image/png",
+	"image/jpg",
+	"image/jpeg",
+	"image/webp",
+]
+
 class cv_Image:
 	
 	ASSET_DIRECTORY = ASSET_DIRECTORY

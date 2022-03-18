@@ -2,7 +2,7 @@
 
 import discord
 from discord import app_commands
-from .utils import cv_Image
+from .utils import cv_Image, static_image_content_type
 import cv2 
 
 
@@ -17,6 +17,8 @@ async def wasted_(interaction:discord.Interaction, user: discord.User=None, imag
 	webhook = interaction.followup
 	if not user: user = interaction.user
 	if image:
+		if not image.content_type in static_image_content_type: 
+			return await interaction.client.send_error(interaction, "Invalid image type", webhook=webhook, ephemeral=ephemeral)
 		url = image.url 
 	elif user:
 		url = user.display_avatar.with_format('png').with_size(256).url
