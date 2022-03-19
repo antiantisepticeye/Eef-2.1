@@ -12,30 +12,36 @@ from ..general import General
 from ..fun import Fun
 from ..info import Info
 from ..gifs import Gifs
+from ..search import Search
  
 
 embed1 = discord.Embed(title="Eef Hellp", description="```Use the command option to get more info on a specific command```", color=0x80002f)
-gen_cmds = General._children.keys()
+gen_cmds = [i.name for i in General.commands]
 embed1.add_field(name="General commands", value=",\n".join(gen_cmds))
 
 embed2 = discord.Embed(title="Eef Hellp", description="```Use the command option to get more info on a specific command```", color=0x80002f)
-fun_cmds = Fun._children.keys()
+fun_cmds = [i.name for i in Fun.commands]
 embed2.add_field(name="🎉 Fun commands", value=",\n".join(fun_cmds))
 
 embed3 = discord.Embed(title="Eef Hellp", description="```Use the command option to get more info on a specific command```", color=0x80002f)
-info_cmds = Info._children.keys()
+info_cmds = [i.name for i in Info.commands]
 embed3.add_field(name="ℹ Info commands", value=",\n".join(info_cmds))
 
 embed4 = discord.Embed(title="Eef Hellp", description="```Use the command option to get more info on a specific command```", color=0x80002f)
-gif_cmds = Gifs._children.keys()
+gif_cmds = [i.name for i in Gifs.commands]
 embed4.add_field(name="😎 Gif commands", value=",\n".join(info_cmds))
+
+embed5 = discord.Embed(title="Eef Hellp", description="```Use the command option to get more info on a specific command```", color=0x80002f)
+search_cmds = [f"`{i.name}`" for i in Search.commands]
+embed4.add_field(name="🔍 Search commands", value=",\n".join(info_cmds))
 
 
 help_embeds = {
 	"embed1": embed1,
 	"embed2": embed2,
 	"embed3": embed3,
-	"embed4": embed4
+	"embed4": embed4,
+	"embed5": embed5
 	}
 
 class Dropdown(discord.ui.Select):
@@ -43,10 +49,11 @@ class Dropdown(discord.ui.Select):
 		self.id_ = id_
 
 		options = [
-			discord.SelectOption(label='General', value="embed1", description='General command list', emoji=u'\u2139'),
-			discord.SelectOption(label='Fun', value="embed2", description='Fun command list', emoji=u'\U0001F389'),
-			discord.SelectOption(label='Action', value="embed3", description='Info command list', emoji=u'\U0001F92A'),
-			discord.SelectOption(label='Gifs', value="embed4", description='Gif command list', emoji=u'\U0001F92A'),
+			discord.SelectOption(label='General', value="embed1", description='General command list'),
+			discord.SelectOption(label='Fun', value="embed2", description='Fun command list', emoji="🎉"),
+			discord.SelectOption(label='Info', value="embed3", description='Info command list', emoji="ℹ"),
+			discord.SelectOption(label='Gifs', value="embed4", description='Gif command list', emoji="💃"),
+			discord.SelectOption(label='Search', value="embed5", description='Search command list', emoji="🔍"),
 		]
 
 		super().__init__(placeholder='Choose command category', min_values=1, max_values=1, options=options)
