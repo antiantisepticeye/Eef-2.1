@@ -10,6 +10,7 @@ from .server_banner import server_banner_
 
 
 General = app_commands.Group(name="general", description="General commands!")
+setattr(General, "emoji", "🍪")
 General.add_command(avatar_)
 General.add_command(server_icon_)
 General.add_command(server_banner_)

@@ -12,6 +12,7 @@ from .emoji import emoji_
 
 
 Info = app_commands.Group(name="info", description="Info commands!")
+setattr(Info, "emoji", "ℹ")
 Info.add_command(user_)
 Info.add_command(role_)
 Info.add_command(server_)

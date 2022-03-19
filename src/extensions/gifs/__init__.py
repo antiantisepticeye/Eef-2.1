@@ -14,6 +14,7 @@ from .slap import slap_
 
 
 Gifs = app_commands.Group(name="gifs", description="gif commands!")
+setattr(Gifs, "emoji", "💃")
 Gifs.add_command(hug_)
 Gifs.add_command(bonk_)
 Gifs.add_command(kick_)

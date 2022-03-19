@@ -6,6 +6,8 @@ from asyncio import sleep
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 load_dotenv()
+from pprint import pprint
+
 
 """Discord Imports"""
 
@@ -48,8 +50,8 @@ client.tree = tree
 client.send_error = send_error_embed
 client.API_BASE = "https://api.eefbot.ga"
 client.API_TOKEN = os.getenv("API_TOKEN")
-client.debug_mode = False
-client.debug_guild = discord.Object(id=12345678901234567)
+client.debug_mode = True
+client.debug_guild = discord.Object(id=573930213331697665)
 client.start_date = datetime.now()
 client.get_uptime = get_uptime
 
@@ -63,8 +65,10 @@ async def on_ready():
 	else: 
 		await tree.sync()
 	print("Bot is ready!")
-
+	
 
 setup(tree)
+
+
 
 client.run(os.getenv('BOT_TOKEN'))

@@ -12,6 +12,7 @@ from .legofy import legofy_
 
 
 Image = app_commands.Group(name="image", description="Image commands!")
+setattr(Image, "emoji", "📷")
 Image.add_command(wasted_)
 Image.add_command(wanted_)
 Image.add_command(chromatic_)

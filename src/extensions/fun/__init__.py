@@ -11,6 +11,7 @@ from .rip import rip_
 
 
 Fun = app_commands.Group(name="fun", description="Fun commands!")
+setattr(Fun, "emoji", "🎊")
 Fun.add_command(cat_)
 Fun.add_command(dog_)
 Fun.add_command(choose_)
