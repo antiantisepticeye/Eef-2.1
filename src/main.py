@@ -50,8 +50,8 @@ client.tree = tree
 client.send_error = send_error_embed
 client.API_BASE = "https://api.eefbot.ga"
 client.API_TOKEN = os.getenv("API_TOKEN")
-client.debug_mode = True
-client.debug_guild = discord.Object(id=573930213331697665)
+client.debug_guild = discord.Object(id=int(os.getenv('DEBUG_GUILD'))) if os.getenv('DEBUG_GUILD') else None
+client.debug_mode = bool(client.debug_guild)
 client.start_date = datetime.now()
 client.get_uptime = get_uptime
 
