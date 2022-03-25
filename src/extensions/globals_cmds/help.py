@@ -114,6 +114,6 @@ def get_commands(interaction: discord.Interaction, current:str) -> Dict[str, str
 
 
 @help_.autocomplete('command')
-async def command_autocomplete(interaction: discord.Interaction,current: str,namespace: app_commands.Namespace) -> List[app_commands.Choice[str]]:
+async def command_autocomplete(interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
 	results = get_commands(interaction, current)
 	return [ app_commands.Choice(name=command[0], value=command[1]) for command in results.items() ][:7]

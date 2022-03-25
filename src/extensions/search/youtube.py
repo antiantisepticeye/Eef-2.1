@@ -103,6 +103,6 @@ async def get_search_suggestions(interaction: discord.Interaction, query:str) ->
 	return results
 
 @youtube_.autocomplete('query')
-async def command_autocomplete(interaction: discord.Interaction, current: str, namespace: app_commands.Namespace) -> List[app_commands.Choice[str]]:
+async def command_autocomplete(interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
 	results = await get_search_suggestions(interaction, current)
 	return [ app_commands.Choice(name=suggestion, value=suggestion) for suggestion in results if suggestion ][:10]
