@@ -37,7 +37,7 @@ class EefClient(discord.Client):
 		self.API_TOKEN = os.getenv("API_TOKEN")
 		self.debug_guild = discord.Object(id=int(os.getenv('DEBUG_GUILD'))) if os.getenv('DEBUG_GUILD') else None
 		self.debug_mode = bool(self.debug_guild)
-		self.start_date = datetime.fromtimestamp(1647739935)
+		self.start_date = datetime.now()
 		self.event(self.on_ready)
 	
 	
