@@ -34,8 +34,9 @@ async def server_(interaction:discord.Interaction, ephemeral:bool=False):
 		embed.add_field(name="Channels", value=f"<:textchannel:835526098603081748> {len(guild.text_channels)} | <:voicechannel:835526343692517446> {len(guild.voice_channels)}", inline=True) 
 
 		try:
-			embed.add_field(name="Ban Count", value=f"<:Ban:835528016704700456> {len(await guild.bans())}", inline=True) 
-		except:
+			embed.add_field(name="Ban Count", value=f"<:Ban:835528016704700456> {len([i async for i in guild.bans(limit=None)])}", inline=True) 
+		except Exception as e:
+			print(e)
 			pass
 
 		if guild.premium_subscription_count != 0: level = f"(Level {guild.premium_subscription_count})"

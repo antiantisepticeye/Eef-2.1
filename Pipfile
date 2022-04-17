@@ -8,14 +8,15 @@ discord-py = {ref = "master", git = "https://github.com/Rapptz/discord.py"}
 cairosvg = "*"
 numpy = "*"
 fuzzywuzzy = "*"
-python-levenshtein = "*"
+python-Levenshtein = "*"
 python-dotenv = "*"
 legofy = {git = "https://github.com/JuanPotato/Legofy.git"}
 opencv-python = "*"
 setuptools = "*"
 psutil = "*"
+"discord.py" = {ref = "master", git = "https://github.com/Rapptz/discord.py"}
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "*"
